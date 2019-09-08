@@ -34,4 +34,4 @@ The second question corresponds to cat, which has 6 distinct substrings: {a,c,t,
 
 ![](sample_IO.png)
 
-Details : [2018 ICPC East-Central NA Regional Practice Contest](https://open.kattis.com/problems/textprocessor)
+Details : [Southwestern Europe Regional Contest (SWERC) 2015](https://open.kattis.com/problems/textprocessor)
