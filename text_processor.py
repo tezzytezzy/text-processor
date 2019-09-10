@@ -1,7 +1,3 @@
-###
-#
-###
-
 def read_data(input_file):
     with open (input_file, 'rt', encoding="ISO-8859-1") as myfile:
         start_idx_pos_list = []
@@ -23,18 +19,31 @@ def read_data(input_file):
     get_substrings(text_string, length_of_text, start_idx_pos_list)
 
 def get_substrings(text_string, length_of_text, start_idx_pos_list):
-    for q in range(len(start_idx_pos_list)):
-        string_to_examine = text_string[start_idx_pos_list[q]: start_idx_pos_list[q] + length_of_text].split()
+    for question in range(len(start_idx_pos_list)):
+        string_to_examine = text_string[start_idx_pos_list[question]: start_idx_pos_list[question] + length_of_text]
 
-        letters = {}
+        substring_combos = []
 
-        # Exmaine all the combos of one-letter long to 'length_of_text'-letter long in 'string_to_examine'
-        for string_length in range(length_of_text):
+        # Exmaine all the combos from one-letter long to 'length_of_text'-letter long in 'string_to_examine'
+        for idx in range(len(string_to_examine)):
 
+            # Determine how many times to go over 'string_to_examine' give 'idx' length
+            # Ex. 1 'cat'
+            # substring length:                    1 2 3
+            # string combo(ex. duplicate removal): 3 2 1
+            #
+            # Ex. 2 'tetsuya'
+            # substring length:                    1 2 3 4 5 6 7
+            # string combo(ex. duplicate removal): 7 6 5 4 3 2 1
+            #
+            # From the above, # of 'string combo' before removing duplicates = 
+            #  (1 + len(string_to_examine)) - 'substring length'
+            for idx2 in range((1 + len(string_to_examine)) - (idx + 1)):
+                substring_combos.append(string_to_examine[idx2: idx2 + idx + 1])
 
+            # The following two lines removes duplicates List -> set -> List
+            substring_combos_set = set(substring_combos)
 
+        print(len(substring_combos_set))
 
-        for letter in range(len(string_to_examine)):
-            pass
-    print ('x')
 read_data("sample.in")
